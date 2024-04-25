@@ -102,15 +102,29 @@ public class movPlayer : MonoBehaviour
             miCuerpo.drag = 0;
         }
 
-	}
+        if (Input.GetKey(KeyCode.V))
+        {
+            vel = 48f;
+            agarrePiso = 12f;
+        }
 
-	
+        else
+        {
+            vel = 5f;
+            agarrePiso = 5f;
+        }
+
+
+    }
+
+
 
     private void FixedUpdate()
     {
         caminar();
 	miCuerpo.AddForce(Physics.gravity);
-	
+
+        
     }
 
 
