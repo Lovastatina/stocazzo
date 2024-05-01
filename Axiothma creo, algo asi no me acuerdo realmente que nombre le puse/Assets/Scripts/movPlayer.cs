@@ -13,7 +13,9 @@ public class movPlayer : MonoBehaviour
     bool listoSalto = true;
     public float multGravedad = 1f;
     public float distToGround;
-    
+    bool slowTime = false;
+    bool fastTime = false;
+
 
     [Header("En Piso")]
     public float altura;
@@ -102,19 +104,30 @@ public class movPlayer : MonoBehaviour
             miCuerpo.drag = 0;
         }
 
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetButton("Fire1") && fastTime == false)
         {
-            vel = 48f;
-            agarrePiso = 12f;
+            vel = 84f;
+            agarrePiso = 20f;
+            slowTime = true;
         }
 
+        else if (Input.GetButton("Fire2") && slowTime == false)
+        {
+            vel = 2f;
+            agarrePiso = 0.3f;
+            fastTime = true;
+        }
+
+       
+
+      
         else
         {
             vel = 5f;
             agarrePiso = 5f;
+            fastTime = false;
+            slowTime = false;
         }
-
-
     }
 
 
@@ -127,6 +140,8 @@ public class movPlayer : MonoBehaviour
         
     }
 
+
+    
 
 }
 

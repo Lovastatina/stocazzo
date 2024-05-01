@@ -9,7 +9,8 @@ public class movGiocatore : MonoBehaviour
     public Transform orientazione;
     float rotX;
     float rotY;
-
+    bool slowTime = false;
+    bool fastTime = false;
 
     void Start()
     {
@@ -31,7 +32,31 @@ public class movGiocatore : MonoBehaviour
         transform.rotation = Quaternion.Euler(rotX, rotY, 0);
         orientazione.rotation = Quaternion.Euler(0, rotY, 0);
 
+        if (Input.GetButton("Fire1") && fastTime == false)
+            {
+                zenX = 3600f;
+                zenY = 3600f;
+                slowTime = true;
+            }
 
-             
+        else if (Input.GetButton("Fire2") && slowTime == false)
+        {
+            zenX = 180f;
+            zenY = 180f;
+            fastTime = true;
+        }
+
+        else
+        {
+            zenX = 700f;
+            zenY = 700f;
+            slowTime = false;
+            fastTime = false;
+        }
+
+        
+
+      
+
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ReloJNoMarques : MonoBehaviour
 {
+
+    bool slowTime = false;
+    bool fastTime = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,20 +15,35 @@ public class ReloJNoMarques : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetButton("Fire1") && fastTime == false)
         {
             Time.timeScale = 0.2f;
 
             Debug.Log(Time.timeScale);
+            slowTime = true;
 
+        }
+
+        else if (Input.GetButton("Fire2") && slowTime == false)
+        {
+            Debug.Log(Time.timeScale);
+            Time.timeScale = 1.8f;
+            fastTime = true;
         }
 
         else
         {
             Time.timeScale = 1f;
+            slowTime = false;
+            fastTime = false;
         }
 
+
+
         
+
+
+
 
 
     }
